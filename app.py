@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
+import os
 
 app = Flask(__name__)
 
@@ -84,4 +85,5 @@ def index():
     return render_template("index.html", chart=chart_html)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
