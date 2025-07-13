@@ -85,6 +85,6 @@ def index():
     return render_template("index.html", chart=chart_html)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 10000))
     print(f"Starting app on port {port}")
     app.run(host="0.0.0.0", port=port)
