@@ -83,8 +83,3 @@ def index():
     chart_html = pio.to_html(fig, full_html=False)
 
     return render_template("index.html", chart=chart_html)
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
-
