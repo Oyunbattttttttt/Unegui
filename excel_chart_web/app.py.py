@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # 📂 Load Excel data
-    file_path = '9.web/excel_chart_web/2025.xlsx'
+    file_path = 'excel_chart_web/2025.xlsx'
 
     df = pd.read_excel(file_path)
 
