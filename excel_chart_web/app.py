@@ -83,3 +83,5 @@ def index():
     chart_html = pio.to_html(fig, full_html=False)
 
     return render_template("index.html", chart=chart_html)
+
+# why
