@@ -1,0 +1,1 @@
+-e "#!/bin/bash\nconda activate myenv\nexport FLASK_APP=app.py\nflask run" 
