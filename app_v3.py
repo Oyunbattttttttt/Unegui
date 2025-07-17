@@ -82,4 +82,18 @@ def index():
     # 🔄 Convert to HTML
     chart_html = pio.to_html(fig, full_html=False)
 
-    return render_template("index.html", chart=chart_html)
+    with open("docs/index.html", "w", encoding="utf-8") as f:
+        f.write(f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Chart Viewer</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>СУУДЛЫН АВТО МАШИНЫ ҮНЭ</h1>
+        {chart_html}
+    </body>
+    </html>
+        """)
+
