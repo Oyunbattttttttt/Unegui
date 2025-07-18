@@ -4,6 +4,10 @@ import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
 import os
+from flask import Flask, send_from_directory
+import plotly.graph_objs as go
+import plotly.io as pio
+
 
 app = Flask(__name__)
 
@@ -79,21 +83,22 @@ def index():
     fig.update_yaxes(title_text="сая төгрөг", secondary_y=False)
     fig.update_yaxes(title_text="Зарын тоо", secondary_y=True)
 
+    fig = go.Figure()
+    fig.add_scatter(y=[1, 3, 2, 4])
+    
     # 🔄 Convert to HTML
     chart_html = pio.to_html(fig, full_html=False)
 
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Chart Viewer</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h1>СУУДЛЫН АВТО МАШИНЫ ҮНЭ</h1>
-        {chart_html}
-    </body>
-    </html>
+        <html>
+        <head><meta charset="utf-8"><title>Chart</title></head>
+        <body>
+            <h1>СУУДЛЫН АВТО МАШИНЫ ҮНЭ</h1>
+            {chart_html}
+        </body>
+        </html>
         """)
 
+    # ✅ Serve the static file directly
+    return send_from_directory("docs", "index.html")
