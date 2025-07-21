@@ -44,7 +44,7 @@ def index():
     # Scatter plot of daily prices
     fig.add_trace(go.Scatter(
         x=daily['date_clean'], y=daily['price'],
-        mode='lines+markers',
+        mode='markers',
         name='Тухайн өдөр',
         marker=dict(color='gray', size=6)
     ))
@@ -82,14 +82,11 @@ def index():
 
     fig.update_yaxes(title_text="сая төгрөг", secondary_y=False)
     fig.update_yaxes(title_text="Зарын тоо", secondary_y=True)
-
-    fig = go.Figure()
-    fig.add_scatter(y=[1, 3, 2, 4])
     
     # 🔄 Convert to HTML
     chart_html = pio.to_html(fig, full_html=False)
 
-    with open("docs/chart_index.html", "w", encoding="utf-8") as f:
+    with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(f"""
         <html>
         <head><meta charset="utf-8"><title>Chart</title></head>
@@ -101,4 +98,8 @@ def index():
         """)
 
     # ✅ Serve the static file directly
-    return send_from_directory("docs", "chart_index.html")
+    return send_from_directory("docs", "index.html")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10001))
+    app.run(host="0.0.0.0", port=port, debug=True)
