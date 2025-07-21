@@ -44,7 +44,7 @@ def index():
     # Scatter plot of daily prices
     fig.add_trace(go.Scatter(
         x=daily['date_clean'], y=daily['price'],
-        mode='markers',
+        mode='lines+markers',
         name='Тухайн өдөр',
         marker=dict(color='gray', size=6)
     ))
