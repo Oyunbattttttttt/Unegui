@@ -89,7 +89,7 @@ def index():
     # 🔄 Convert to HTML
     chart_html = pio.to_html(fig, full_html=False)
 
-    with open("docs/index.html", "w", encoding="utf-8") as f:
+    with open("docs/chart_index.html", "w", encoding="utf-8") as f:
         f.write(f"""
         <html>
         <head><meta charset="utf-8"><title>Chart</title></head>
@@ -101,4 +101,4 @@ def index():
         """)
 
     # ✅ Serve the static file directly
-    return send_from_directory("docs", "index.html")
+    return send_from_directory("docs", "chart_index.html")
